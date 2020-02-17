@@ -27,4 +27,12 @@ public class CustomerService {
 		return repository.findById(id);
 	}
 
+	public Customer save(Customer entity) {
+		return repository.save(entity);
+	}
+
+	public void delete(Customer entity) {
+		repository.delete(entity);
+	}
+
 }
