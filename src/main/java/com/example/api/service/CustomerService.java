@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.example.api.domain.Customer;
@@ -20,8 +21,8 @@ public class CustomerService {
 		this.repository = repository;
 	}
 
-	public List<Customer> findAll() {
-		return repository.findAllByOrderByNameAsc();
+	public List<Customer> findAll(Pageable pageable) {
+		return repository.findAllByOrderByNameAsc(pageable);
 	}
 
 	public Optional<Customer> findById(Long id) {
