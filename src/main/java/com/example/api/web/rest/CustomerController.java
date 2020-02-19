@@ -40,26 +40,29 @@ public class CustomerController {
 		return service.findById(id)
 				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Customer not found"));
 	}
-	
+
 	@DeleteMapping
-	public void deleteCustomer(@PathVariable Customer c) {
+	public void deleteCustomer(@RequestBody Customer c) {
 		service.delete(c);
 	}
-	
+
 	@PostMapping
-	public ResponseEntity<?> createCustomer(@RequestBody Customer c) {
-		if(c.getName() != null || c.getEmail() != null)	
+	public ResponseEntity<Customer> createCustomer(@RequestBody Customer c) { //
+		try {
 			return ResponseEntity.ok(service.save(c));
-		else
-			return new ResponseEntity(HttpStatus.NOT_ACCEPTABLE);
+		}catch (Exception e) {
+			return new ResponseEntity<Customer> (HttpStatus.NOT_ACCEPTABLE);
+		}
 	}
-	
+
 	@PutMapping
 	public  ResponseEntity<?> updateCustomer(@RequestBody Customer c) {
-		if(c.getName() != null || c.getEmail() != null)	
-			return ResponseEntity.ok(service.save(c));
-		else
-			return new ResponseEntity(HttpStatus.NOT_ACCEPTABLE);
+		try {
+			service.findById(c.getId())
+				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Customer not found"));
+			return ResponseEntity.ok(service.update(c));
+		}catch (Exception e) {
+			return new ResponseEntity<Customer> (HttpStatus.NOT_ACCEPTABLE);
+		}
 	}
-	
 }

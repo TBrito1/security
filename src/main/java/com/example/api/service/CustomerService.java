@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.api.domain.Customer;
+import com.example.api.helper.StringHelper;
 import com.example.api.repository.CustomerRepository;
 
 @Service
@@ -27,12 +28,23 @@ public class CustomerService {
 		return repository.findById(id);
 	}
 
-	public Customer save(Customer entity) {
-		return repository.save(entity);
+	public void delete(Customer c) {
+		if(repository.findById(c.getId()).isPresent())
+			repository.delete(c);
 	}
 
-	public void delete(Customer entity) {
-		repository.delete(entity);
+	public Customer save(Customer c) {
+		if(!StringHelper.isBlankOrNull(c.getName()) || !StringHelper.isBlankOrNull(c.getEmail()))	
+			return repository.save(c);
+		else
+			return new Customer();
 	}
 
+	public Customer update(Customer c) {
+		if(!StringHelper.isBlankOrNull(c.getName()) || !StringHelper.isBlankOrNull(c.getEmail()))
+			return repository.save(c);
+		else
+			return new Customer();
+	}
+	
 }
