@@ -8,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.example.api.domain.Customer;
+import com.example.api.domain.Endereco;
 import com.example.api.helper.StringHelper;
 import com.example.api.repository.CustomerRepository;
 
@@ -35,9 +36,9 @@ public class CustomerService {
 	}
 
 	public Customer save(Customer c) {
-		if(!StringHelper.isBlankOrNull(c.getName()) || !StringHelper.isBlankOrNull(c.getEmail()))	
+		if(!StringHelper.isBlankOrNull(c.getName()) || !StringHelper.isBlankOrNull(c.getEmail())) {
 			return repository.save(c);
-		else
+		}else
 			return new Customer();
 	}
 
@@ -47,5 +48,5 @@ public class CustomerService {
 		else
 			return new Customer();
 	}
-	
+
 }

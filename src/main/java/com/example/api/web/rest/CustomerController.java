@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.example.api.domain.Customer;
+import com.example.api.repository.EnderecoRepository;
 import com.example.api.service.CustomerService;
 
 @RestController
@@ -24,7 +25,7 @@ import com.example.api.service.CustomerService;
 public class CustomerController {
 
 	private CustomerService service;
-
+	
 	@Autowired
 	public CustomerController(CustomerService service) {
 		this.service = service;
@@ -47,7 +48,7 @@ public class CustomerController {
 	}
 
 	@PostMapping
-	public ResponseEntity<Customer> createCustomer(@RequestBody Customer c) { //
+	public ResponseEntity<Customer> createCustomer(@RequestBody Customer c) {
 		try {
 			return ResponseEntity.ok(service.save(c));
 		}catch (Exception e) {
