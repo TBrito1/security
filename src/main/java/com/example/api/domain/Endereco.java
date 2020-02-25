@@ -2,16 +2,17 @@ package com.example.api.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class Endereco {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	private String cep;
+	private Long cep;
 	private String logradouro;
 	private String complemento;
 	private String bairro;
@@ -30,16 +31,12 @@ public class Endereco {
 		this.id = id;
 	}
 
-	public void setCep(String cep) {
+	public void setCep(Long cep) {
 		this.cep = cep;
 	}
 
-	public String getCep() {
+	public Long getCep() {
 		return cep;
-	}
-	
-	public void seCep(String cep) {
-		this.cep = cep;
 	}
 	
 	public String getLogradouro() {
@@ -104,6 +101,13 @@ public class Endereco {
 	
 	public void setGia(String gia) {
 		this.gia = gia;
+	}
+	
+	@Override
+	public String toString() {
+		return "Endereco [id=" + id + ", cep=" + cep + ", logradouro=" + logradouro + ", complemento=" + complemento
+				+ ", bairro=" + bairro + ", localidade=" + localidade + ", uf=" + uf + ", unidade=" + unidade
+				+ ", ibge=" + ibge + ", gia=" + gia + "]";
 	}
 	
 }

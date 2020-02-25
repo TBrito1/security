@@ -8,7 +8,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.example.api.domain.Customer;
-import com.example.api.domain.Endereco;
 import com.example.api.helper.StringHelper;
 import com.example.api.repository.CustomerRepository;
 
@@ -23,7 +22,7 @@ public class CustomerService {
 	}
 
 	public List<Customer> findAll(Pageable pageable) {
-		return repository.findAllByOrderByNameAsc(pageable);
+		return repository.findAllByOrderByIdAsc(pageable);
 	}
 
 	public Optional<Customer> findById(Long id) {

@@ -29,3 +29,6 @@ INSERT INTO customer (id, name, email) VALUES
 (28, 'Joel', 'joel@email.com'),
 (29, 'Lea', 'lea@email.com'),
 (30, 'Joãozinho', 'joaozinho@email.com');
+
+INSERT INTO endereco (id, cep) VALUES
+(1, 02420001);
