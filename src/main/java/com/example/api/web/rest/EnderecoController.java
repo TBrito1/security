@@ -50,9 +50,10 @@ public class EnderecoController {
 	@PostMapping
 	public ResponseEntity<Endereco> createEndereco(@RequestBody Endereco e) {
 		try {
-			RestTemplate restTemplate = new RestTemplate();
-			Endereco novo = new Endereco();
-			novo = restTemplate.getForObject(Viacep.PATH.getProperty() + e.getCep() + Viacep.TYPE.getProperty(), Endereco.class);
+			
+			Endereco novo = new RestTemplate().getForObject(
+					Viacep.PATH.getProperty() + e.getCep() + Viacep.TYPE.getProperty(), 
+					Endereco.class);
 									
 			return ResponseEntity.ok(service.save(novo));
 		}catch (Exception exp) {
