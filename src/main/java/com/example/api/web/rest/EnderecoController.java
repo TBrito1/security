@@ -52,7 +52,7 @@ public class EnderecoController {
 		try {
 			RestTemplate restTemplate = new RestTemplate();
 			Endereco novo = new Endereco();
-			novo = restTemplate.getForObject(Viacep.PATH + e.getCep() + Viacep.TYPE, Endereco.class);
+			novo = restTemplate.getForObject(Viacep.PATH.getProperty() + e.getCep() + Viacep.TYPE.getProperty(), Endereco.class);
 									
 			return ResponseEntity.ok(service.save(novo));
 		}catch (Exception exp) {
