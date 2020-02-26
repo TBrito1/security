@@ -102,5 +102,5 @@ public class Endereco {
 	public void setGia(String gia) {
 		this.gia = gia;
 	}
-		
+	
 }

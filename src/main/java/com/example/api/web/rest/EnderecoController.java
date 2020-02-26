@@ -17,6 +17,7 @@ import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.client.RestTemplate;
 
 import com.example.api.domain.Endereco;
+import com.example.api.helper.Viacep;
 import com.example.api.service.EnderecoService;
 
 @RestController
@@ -51,7 +52,7 @@ public class EnderecoController {
 		try {
 			RestTemplate restTemplate = new RestTemplate();
 			Endereco novo = new Endereco();
-			novo = restTemplate.getForObject("http://www.viacep.com.br/ws/"+e.getCep()+"/json/", Endereco.class);
+			novo = restTemplate.getForObject(Viacep.PATH + e.getCep() + Viacep.TYPE, Endereco.class);
 									
 			return ResponseEntity.ok(service.save(novo));
 		}catch (Exception exp) {

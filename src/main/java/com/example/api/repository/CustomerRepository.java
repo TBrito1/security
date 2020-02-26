@@ -9,6 +9,6 @@ import com.example.api.domain.Customer;
 
 public interface CustomerRepository extends PagingAndSortingRepository<Customer, Long> {
 
-	List<Customer> findAllByOrderByIdAsc(Pageable page);
+	List<Customer> findAllByOrderByNameAsc(Pageable page);
 	
 }

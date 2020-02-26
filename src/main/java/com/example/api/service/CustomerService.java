@@ -22,7 +22,7 @@ public class CustomerService {
 	}
 
 	public List<Customer> findAll(Pageable pageable) {
-		return repository.findAllByOrderByIdAsc(pageable);
+		return repository.findAllByOrderByNameAsc(pageable);
 	}
 
 	public Optional<Customer> findById(Long id) {
