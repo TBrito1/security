@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.client.RestTemplate;
 
-import com.example.api.domain.Customer;
 import com.example.api.domain.Endereco;
 import com.example.api.service.EnderecoService;
 
@@ -47,16 +46,14 @@ public class EnderecoController {
 		service.delete(e);
 	}
 
-	@PostMapping("/{cep}")
-	public ResponseEntity<Endereco> createEndereco(@PathVariable Long cep) {
+	@PostMapping
+	public ResponseEntity<Endereco> createEndereco(@RequestBody Endereco e) {
 		try {
 			RestTemplate restTemplate = new RestTemplate();
-			Endereco v = new Endereco();
-			v = restTemplate.getForObject("viacep.com.br/ws/02420001/json/", Endereco.class);
-		
-			System.out.println(v);
-			
-			return ResponseEntity.ok(service.save(v));
+			Endereco novo = new Endereco();
+			novo = restTemplate.getForObject("http://www.viacep.com.br/ws/"+e.getCep()+"/json/", Endereco.class);
+									
+			return ResponseEntity.ok(service.save(novo));
 		}catch (Exception exp) {
 			return new ResponseEntity<Endereco> (HttpStatus.NOT_ACCEPTABLE);
 		}
@@ -69,7 +66,7 @@ public class EnderecoController {
 			.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Endereco not found"));
 			return ResponseEntity.ok(service.update(e));
 		}catch (Exception exp) {
-			return new ResponseEntity<Customer> (HttpStatus.NOT_ACCEPTABLE);
+			return new ResponseEntity<Endereco> (HttpStatus.NOT_ACCEPTABLE);
 		}
 	}
 }

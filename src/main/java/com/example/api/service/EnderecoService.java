@@ -12,30 +12,30 @@ import com.example.api.repository.EnderecoRepository;
 @Service
 public class EnderecoService {
 
-	private EnderecoRepository enderecoRepository;
+	private EnderecoRepository repository;
 
 	@Autowired
-	public EnderecoService(EnderecoRepository enderecoRepository) {
-		this.enderecoRepository = enderecoRepository;
+	public EnderecoService(EnderecoRepository repository) {
+		this.repository = repository;
 	}
 
 	public List<Endereco> findAll() {
-		return enderecoRepository.findAll();
+		return repository.findAll();
 	}
 
 	public Optional<Endereco> findById(Long id) {
-		return enderecoRepository.findById(id);
+		return repository.findById(id);
 	}
 
 	public void delete(Endereco e) {
-		enderecoRepository.delete(e);
+		repository.delete(e);
 	}
 
 	public Endereco save(Endereco e) {
-		return enderecoRepository.save(e);
+		return repository.save(e);
 	}
 
 	public Endereco update(Endereco e) {
-		return enderecoRepository.save(e);
+		return repository.save(e);
 	}
 }

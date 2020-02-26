@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.example.api.domain.Customer;
-import com.example.api.repository.EnderecoRepository;
 import com.example.api.service.CustomerService;
 
 @RestController

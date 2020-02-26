@@ -12,7 +12,7 @@ public class Endereco {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	private Long cep;
+	private String cep;
 	private String logradouro;
 	private String complemento;
 	private String bairro;
@@ -31,11 +31,11 @@ public class Endereco {
 		this.id = id;
 	}
 
-	public void setCep(Long cep) {
+	public void setCep(String cep) {
 		this.cep = cep;
 	}
 
-	public Long getCep() {
+	public String getCep() {
 		return cep;
 	}
 	
@@ -102,12 +102,5 @@ public class Endereco {
 	public void setGia(String gia) {
 		this.gia = gia;
 	}
-	
-	@Override
-	public String toString() {
-		return "Endereco [id=" + id + ", cep=" + cep + ", logradouro=" + logradouro + ", complemento=" + complemento
-				+ ", bairro=" + bairro + ", localidade=" + localidade + ", uf=" + uf + ", unidade=" + unidade
-				+ ", ibge=" + ibge + ", gia=" + gia + "]";
-	}
-	
+		
 }
