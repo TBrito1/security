@@ -32,7 +32,7 @@ public class Customer implements Serializable {
 	@Email
 	private String email;
 
-	@OneToMany(targetEntity = Endereco.class, cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "ep_fk", referencedColumnName = "id")
 	private List<Endereco> enderecos;
 

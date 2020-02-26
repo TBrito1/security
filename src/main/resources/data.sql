@@ -1,3 +1,10 @@
+INSERT INTO endereco
+(id, cep, logradouro, complemento, bairro, localidade, uf, ibge, gia) 
+VALUES
+(1, '01001001', 'Praca da Se', 'lado par', 'Se', 'Sao Paulo','SP', '3550308', '1004'),
+(2, '04029904', 'Avenida Ibirapuera', '3407', 'Indianopolis', 'Sao Paulo', 'SP', '3550308', '1004')
+;
+
 INSERT INTO customer (id, name, email) VALUES
 (1, 'Mariazinha', 'mariazinha@email.com'),
 (2, 'Alice', 'alice@email.com'),
